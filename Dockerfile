@@ -31,4 +31,4 @@ RUN mv ./frontend/dist ./backend/
 
 EXPOSE 8000
 WORKDIR /app/backend
-CMD [ "gunicorn", "server:app", "-k", "uvicorn.workers.UvicornWorker", "--daemon" ]
+CMD [ "gunicorn", "server:app", "-k", "uvicorn.workers.UvicornWorker" ]

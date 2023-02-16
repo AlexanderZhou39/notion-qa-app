@@ -5,11 +5,11 @@ from qa import askQuestion
 import json
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="public"), name="static")
+app.mount("/static", StaticFiles(directory="dist"), name="static")
 
 @app.get("/")
 async def root():
-    return FileResponse('public/index.html')
+    return FileResponse('dist/index.html')
 
 # @app.post("/ask")
 # async def ask(request: Request):

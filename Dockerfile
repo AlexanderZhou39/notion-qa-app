@@ -10,7 +10,7 @@ RUN mkdir frontend && mkdir backend
 
 # backend setup
 COPY backend/requirements.txt ./backend/
-RUN pip3 install -r requirements.txt
+RUN cd backend && pip3 install -r requirements.txt
 
 # frontend setup
 COPY frontend/package.json ./frontend/

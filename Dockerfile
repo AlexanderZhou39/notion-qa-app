@@ -1,4 +1,4 @@
-FROM node:18
+FROM python:3.8
 
 WORKDIR /app
 
@@ -9,13 +9,14 @@ RUN mkdir frontend && mkdir backend
 
 # backend setup
 COPY backend/requirements.txt ./backend/
-RUN apt-get update
-RUN apt-get install -y software-properties-common
-RUN add-apt-repository ppa:deadsnakes/ppa -y
-RUN apt-get install -y python3.8
-RUN ln -s /usr/bin/python3.8 /usr/bin/python
-RUN apt-get install -y python3-pip
 RUN cd backend && pip3 install -r requirements.txt
+
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
+    npm
+RUN npm install npm@latest -g && \
+    npm install n -g && \
+    n latest
 
 # frontend setup
 COPY frontend/package.json ./frontend/

@@ -10,6 +10,7 @@ RUN mkdir frontend && mkdir backend
 # backend setup
 COPY backend/requirements.txt ./backend/
 RUN cd backend && pip3 install -r requirements.txt
+COPY ./backend/ ./backend/
 
 RUN apt-get update && apt-get install -y \
     software-properties-common \
@@ -30,4 +31,4 @@ RUN mv ./frontend/dist ./backend/
 
 EXPOSE 8000
 WORKDIR /app/backend
-CMD [ "gunicorn", "server:app", "-k", "uvicorn.workers.UvicornWorker" ]
+CMD [ "gunicorn", "server:app", "-k", "uvicorn.workers.UvicornWorker", "--daemon" ]

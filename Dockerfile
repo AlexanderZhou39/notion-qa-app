@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
 RUN npm install npm@latest -g && \
     npm install n -g && \
     n latest
-
+RUN npm install -g yarn
 # frontend setup
 COPY frontend/package.json ./frontend/
 COPY frontend/yarn.lock ./frontend/

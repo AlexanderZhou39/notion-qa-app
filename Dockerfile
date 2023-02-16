@@ -31,4 +31,4 @@ RUN mv ./frontend/dist ./backend/
 
 EXPOSE 8000
 WORKDIR /app/backend
-CMD [ "gunicorn", "server:app", "--workers", "1", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000" ]
+CMD [ "gunicorn", "server:app", "--workers", "1", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000", "--timeout", "180" ]

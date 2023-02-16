@@ -16,3 +16,4 @@ streamlit-chat
 transformers
 torch
 gunicorn
+websockets

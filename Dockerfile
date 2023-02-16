@@ -9,19 +9,12 @@ RUN mkdir frontend && mkdir backend
 
 # backend setup
 COPY backend/requirements.txt ./backend/
-RUN : \
-    && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        software-properties-common \
-    && add-apt-repository -y ppa:deadsnakes \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        python3.8-venv \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && :
-
-RUN python3.8 -m venv /venv
-ENV PATH=/venv/bin:$PATH
+RUN apt-get update
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa -y
+RUN apt-get install -y python3.8
+RUN ln -s /usr/bin/python3.8 /usr/bin/python
+RUN apt-get install -y python3-pip
 RUN cd backend && pip3 install -r requirements.txt
 
 # frontend setup
